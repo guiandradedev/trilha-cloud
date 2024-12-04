@@ -1,0 +1,8 @@
+services:
+  trilha:
+    build: .
+    container_name: trilha_flask
+    ports:
+      - 5000:5000
+    volumes:
+      - ./uploads:/app/uploads
