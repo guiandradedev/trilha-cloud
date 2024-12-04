@@ -7,6 +7,9 @@ WORKDIR /app
 # Etapa 3: Copiar arquivos 
 COPY . /app 
 
+# Instalar libs
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
 # Etapa 4: Instalar dependências 
 RUN pip install --no-cache-dir -r requirements.txt 
 
@@ -14,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 ENV FLASK_ENV=production 
 
 # Etapa 6: Expor porta 
-EXPOSE 5000 
+EXPOSE 8080 
 
 # Etapa 7: Definir comando de execução 
 CMD ["python", "app.py"] 
